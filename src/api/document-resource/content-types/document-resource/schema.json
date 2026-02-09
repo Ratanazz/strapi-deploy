@@ -21,6 +21,13 @@
         "videos",
         "audios"
       ]
+    },
+    "Title": {
+      "type": "string",
+      "required": true
+    },
+    "File_Description": {
+      "type": "blocks"
     }
   }
 }
