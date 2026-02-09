@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "document_resources",
+  "info": {
+    "singularName": "document-resource",
+    "pluralName": "document-resources",
+    "displayName": "Document-Resource"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "File": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}
