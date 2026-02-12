@@ -28,6 +28,16 @@
     },
     "File_Description": {
       "type": "blocks"
+    },
+    "category": {
+      "type": "enumeration",
+      "required": true,
+      "default": "Report",
+      "enum": [
+        "Report",
+        "Policy",
+        "Sub-decree"
+      ]
     }
   }
 }

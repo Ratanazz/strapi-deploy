@@ -479,6 +479,9 @@ export interface ApiDocumentResourceDocumentResource
     draftAndPublish: true;
   };
   attributes: {
+    category: Schema.Attribute.Enumeration<['Report', 'Policy', 'Sub-decree']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Report'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
