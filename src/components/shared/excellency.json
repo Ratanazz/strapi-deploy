@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_shared_excellencies",
+  "info": {
+    "displayName": "excellency"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "position": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "title": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

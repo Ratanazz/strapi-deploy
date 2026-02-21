@@ -1,0 +1,33 @@
+{
+  "kind": "singleType",
+  "collectionName": "committees",
+  "info": {
+    "singularName": "committee",
+    "pluralName": "committees",
+    "displayName": "committee"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "chairman": {
+      "type": "component",
+      "component": "shared.excellency",
+      "repeatable": false
+    },
+    "vice_chairman": {
+      "type": "component",
+      "component": "shared.excellency",
+      "repeatable": false
+    },
+    "members": {
+      "type": "component",
+      "component": "shared.excellency",
+      "repeatable": true
+    }
+  }
+}
