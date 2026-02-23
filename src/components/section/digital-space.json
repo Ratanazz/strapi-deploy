@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_section_digital_spaces",
+  "info": {
+    "displayName": "digital-space"
+  },
+  "options": {},
+  "attributes": {
+    "title_kh": {
+      "type": "string"
+    },
+    "cards": {
+      "type": "component",
+      "component": "cards.digital-stat-card",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

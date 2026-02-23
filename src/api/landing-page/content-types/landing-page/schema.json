@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "landing_pages",
+  "info": {
+    "singularName": "landing-page",
+    "pluralName": "landing-pages",
+    "displayName": "LandingPage"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "DynamicZone": {
+      "type": "dynamiczone",
+      "components": [
+        "section.roadmap-digital-cambodia",
+        "section.digital-space",
+        "section.banner-section",
+        "section.news-section",
+        "section.goals"
+      ]
+    }
+  }
+}

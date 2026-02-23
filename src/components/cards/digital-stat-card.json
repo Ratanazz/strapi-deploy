@@ -1,15 +1,10 @@
 {
-  "kind": "collectionType",
-  "collectionName": "digital_stats",
+  "collectionName": "components_cards_digital_stat_cards",
   "info": {
-    "singularName": "digital-stat",
-    "pluralName": "digital-stats",
-    "displayName": "digital-stat"
+    "displayName": "DigitalStatCard",
+    "icon": "brush"
   },
-  "options": {
-    "draftAndPublish": true
-  },
-  "pluginOptions": {},
+  "options": {},
   "attributes": {
     "category": {
       "type": "string",
@@ -26,15 +21,14 @@
     "icon": {
       "type": "media",
       "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
       ]
-    },
-    "order": {
-      "type": "integer"
     }
-  }
+  },
+  "config": {}
 }

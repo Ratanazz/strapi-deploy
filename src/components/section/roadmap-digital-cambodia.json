@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_section_roadmap_digital_cambodias",
+  "info": {
+    "displayName": "roadmap-digital-cambodia"
+  },
+  "options": {},
+  "attributes": {
+    "section_title_kh": {
+      "type": "string"
+    },
+    "period": {
+      "type": "component",
+      "component": "shared.period",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

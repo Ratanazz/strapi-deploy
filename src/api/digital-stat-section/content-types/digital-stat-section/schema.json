@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "digital_stat_sections",
+  "info": {
+    "singularName": "digital-stat-section",
+    "pluralName": "digital-stat-sections",
+    "displayName": "DigitalStatSection"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title_kh": {
+      "type": "string",
+      "required": true
+    },
+    "cards": {
+      "type": "component",
+      "component": "cards.digital-stat-card",
+      "repeatable": true
+    }
+  }
+}
