@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "roadmap_digital_cambodias",
+  "info": {
+    "singularName": "roadmap-digital-cambodia",
+    "pluralName": "roadmap-digital-cambodias",
+    "displayName": "roadmap-digital-cambodia"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "year_range": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

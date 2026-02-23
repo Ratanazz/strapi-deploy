@@ -467,6 +467,69 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCommitteeCommittee extends Struct.SingleTypeSchema {
+  collectionName: 'committees';
+  info: {
+    displayName: 'committee';
+    pluralName: 'committees';
+    singularName: 'committee';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    chairman: Schema.Attribute.Component<'shared.excellency', false>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::committee.committee'
+    > &
+      Schema.Attribute.Private;
+    members: Schema.Attribute.Component<'shared.excellency', true>;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    vice_chairman: Schema.Attribute.Component<'shared.excellency', false>;
+  };
+}
+
+export interface ApiDigitalStatDigitalStat extends Struct.CollectionTypeSchema {
+  collectionName: 'digital_stats';
+  info: {
+    displayName: 'digital-stat';
+    pluralName: 'digital-stats';
+    singularName: 'digital-stat';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    category: Schema.Attribute.String & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::digital-stat.digital-stat'
+    > &
+      Schema.Attribute.Private;
+    mainStat: Schema.Attribute.String & Schema.Attribute.Required;
+    order: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    source: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiDocumentResourceDocumentResource
   extends Struct.CollectionTypeSchema {
   collectionName: 'document_resources';
@@ -502,34 +565,6 @@ export interface ApiDocumentResourceDocumentResource
   };
 }
 
-export interface ApiMinistryMinistry extends Struct.CollectionTypeSchema {
-  collectionName: 'ministries';
-  info: {
-    displayName: 'Ministry';
-    pluralName: 'ministries';
-    singularName: 'ministry';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::ministry.ministry'
-    > &
-      Schema.Attribute.Private;
-    name: Schema.Attribute.String;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiNewNew extends Struct.CollectionTypeSchema {
   collectionName: 'news';
   info: {
@@ -559,6 +594,37 @@ export interface ApiNewNew extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiRoadmapDigitalCambodiaRoadmapDigitalCambodia
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'roadmap_digital_cambodias';
+  info: {
+    displayName: 'roadmap-digital-cambodia';
+    pluralName: 'roadmap-digital-cambodias';
+    singularName: 'roadmap-digital-cambodia';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::roadmap-digital-cambodia.roadmap-digital-cambodia'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    year_range: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -1074,9 +1140,11 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::committee.committee': ApiCommitteeCommittee;
+      'api::digital-stat.digital-stat': ApiDigitalStatDigitalStat;
       'api::document-resource.document-resource': ApiDocumentResourceDocumentResource;
-      'api::ministry.ministry': ApiMinistryMinistry;
       'api::new.new': ApiNewNew;
+      'api::roadmap-digital-cambodia.roadmap-digital-cambodia': ApiRoadmapDigitalCambodiaRoadmapDigitalCambodia;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
