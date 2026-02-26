@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_shared_main_banners",
+  "info": {
+    "displayName": "MainBanner",
+    "icon": "picture"
+  },
+  "options": {},
+  "attributes": {
+    "current_page_name_kh": {
+      "type": "string",
+      "required": true
+    },
+    "title_kh": {
+      "type": "string",
+      "required": true
+    },
+    "description_kh": {
+      "type": "string"
+    },
+    "float_icon": {
+      "type": "component",
+      "component": "shared.icon",
+      "repeatable": true
+    },
+    "background_image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  },
+  "config": {}
+}

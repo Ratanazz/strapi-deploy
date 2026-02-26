@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_shared_tree_structures",
+  "info": {
+    "displayName": "tree-Structure"
+  },
+  "options": {},
+  "attributes": {
+    "section_title": {
+      "type": "string",
+      "required": true
+    },
+    "section_top_subtitle_kh": {
+      "type": "text",
+      "required": true
+    },
+    "top_tree": {
+      "type": "string"
+    },
+    "middle_left": {
+      "type": "string"
+    },
+    "middle_right": {
+      "type": "string"
+    },
+    "bottom_tree": {
+      "type": "component",
+      "component": "shared.bottom-tree-structure",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

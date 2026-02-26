@@ -4,6 +4,13 @@
     "displayName": "Goals"
   },
   "options": {},
-  "attributes": {},
+  "attributes": {
+    "section_title_kh": {
+      "type": "string"
+    },
+    "section_subtitle_kh": {
+      "type": "string"
+    }
+  },
   "config": {}
 }

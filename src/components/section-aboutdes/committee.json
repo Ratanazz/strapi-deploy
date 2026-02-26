@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_section_aboutdes_committees",
+  "info": {
+    "displayName": "committee"
+  },
+  "options": {},
+  "attributes": {
+    "section_title_kh": {
+      "type": "string",
+      "required": true
+    },
+    "section_subtitle_kh": {
+      "type": "string",
+      "required": true
+    },
+    "Chairmain": {
+      "type": "component",
+      "component": "shared.excellency",
+      "repeatable": false
+    },
+    "vice_chairman": {
+      "type": "component",
+      "component": "shared.excellency",
+      "repeatable": false
+    },
+    "member": {
+      "type": "component",
+      "component": "shared.excellency",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

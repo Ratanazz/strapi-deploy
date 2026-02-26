@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_shared_bottom_tree_structures",
+  "info": {
+    "displayName": "bottom-tree-structure"
+  },
+  "options": {},
+  "attributes": {
+    "title_kh": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,24 @@
+{
+  "kind": "singleType",
+  "collectionName": "page_general_secretariats",
+  "info": {
+    "singularName": "page-general-secretariat",
+    "pluralName": "page-general-secretariats",
+    "displayName": "Page-GeneralSecretariat"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Dynamiczone": {
+      "type": "dynamiczone",
+      "components": [
+        "shared.main-banner",
+        "section-aboutdes.roles-and-responsibilities",
+        "section-generalsecretariat.composition",
+        "section-generalsecretariat.tree-structure-small"
+      ]
+    }
+  }
+}

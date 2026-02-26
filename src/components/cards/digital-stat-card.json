@@ -28,6 +28,12 @@
         "videos",
         "audios"
       ]
+    },
+    "year": {
+      "type": "string"
+    },
+    "source_url": {
+      "type": "string"
     }
   },
   "config": {}

@@ -1,8 +1,8 @@
 {
-  "collectionName": "components_shared_cards",
+  "collectionName": "components_shared_icons",
   "info": {
-    "displayName": "cards",
-    "icon": "book"
+    "displayName": "icon",
+    "icon": "landscape"
   },
   "options": {},
   "attributes": {
@@ -15,9 +15,6 @@
         "videos",
         "audios"
       ]
-    },
-    "description": {
-      "type": "text"
     }
   },
   "config": {}

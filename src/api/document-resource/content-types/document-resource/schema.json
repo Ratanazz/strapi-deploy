@@ -34,9 +34,11 @@
       "required": true,
       "default": "Report",
       "enum": [
+        "Laws&Regulations",
+        "Policies",
         "Report",
-        "Policy",
-        "Sub-decree"
+        "TrainingMaterials ",
+        "Video"
       ]
     }
   }

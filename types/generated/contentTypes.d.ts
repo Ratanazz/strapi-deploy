@@ -540,7 +540,9 @@ export interface ApiDocumentResourceDocumentResource
     draftAndPublish: true;
   };
   attributes: {
-    category: Schema.Attribute.Enumeration<['Report', 'Policy', 'Sub-decree']> &
+    category: Schema.Attribute.Enumeration<
+      ['Laws&Regulations', 'Policies', 'Report', 'TrainingMaterials ', 'Video']
+    > &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Report'>;
     createdAt: Schema.Attribute.DateTime;
@@ -625,6 +627,77 @@ export interface ApiNewNew extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Required;
     Title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPageAboutDesPageAboutDes extends Struct.SingleTypeSchema {
+  collectionName: 'page_about_dess';
+  info: {
+    displayName: 'Page-AboutDes';
+    pluralName: 'page-about-dess';
+    singularName: 'page-about-des';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Dynamiczone: Schema.Attribute.DynamicZone<
+      [
+        'section-aboutdes.roles-and-responsibilities',
+        'section-aboutdes.committee',
+        'shared.tree-structure',
+        'shared.main-banner',
+      ]
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::page-about-des.page-about-des'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPageGeneralSecretariatPageGeneralSecretariat
+  extends Struct.SingleTypeSchema {
+  collectionName: 'page_general_secretariats';
+  info: {
+    displayName: 'Page-GeneralSecretariat';
+    pluralName: 'page-general-secretariats';
+    singularName: 'page-general-secretariat';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Dynamiczone: Schema.Attribute.DynamicZone<
+      [
+        'shared.main-banner',
+        'section-aboutdes.roles-and-responsibilities',
+        'section-generalsecretariat.composition',
+        'section-generalsecretariat.tree-structure-small',
+      ]
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::page-general-secretariat.page-general-secretariat'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1179,6 +1252,8 @@ declare module '@strapi/strapi' {
       'api::document-resource.document-resource': ApiDocumentResourceDocumentResource;
       'api::landing-page.landing-page': ApiLandingPageLandingPage;
       'api::new.new': ApiNewNew;
+      'api::page-about-des.page-about-des': ApiPageAboutDesPageAboutDes;
+      'api::page-general-secretariat.page-general-secretariat': ApiPageGeneralSecretariatPageGeneralSecretariat;
       'api::roadmap-digital-cambodia.roadmap-digital-cambodia': ApiRoadmapDigitalCambodiaRoadmapDigitalCambodia;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

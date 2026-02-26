@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_section_generalsecretariat_tree_structure_smalls",
+  "info": {
+    "displayName": "tree-Structure-small"
+  },
+  "options": {},
+  "attributes": {
+    "section_title_kh": {
+      "type": "string",
+      "required": true
+    },
+    "section_subtitle_kh": {
+      "type": "text",
+      "required": true
+    },
+    "top_tree": {
+      "type": "string",
+      "required": true
+    },
+    "middle_tree": {
+      "type": "string",
+      "required": true
+    },
+    "bottom_tree": {
+      "type": "component",
+      "component": "shared.bottom-tree-structure",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

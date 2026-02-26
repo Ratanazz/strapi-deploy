@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_section_aboutdes_roles_and_responsibilities",
+  "info": {
+    "displayName": "Roles-and-responsibilities",
+    "icon": "briefcase"
+  },
+  "options": {},
+  "attributes": {
+    "section_title_kh": {
+      "type": "string",
+      "required": true
+    },
+    "section_subtitle_kh": {
+      "type": "text",
+      "required": false
+    },
+    "Role_card": {
+      "type": "component",
+      "component": "shared.cards",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

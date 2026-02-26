@@ -4,6 +4,10 @@
     "displayName": "NewsSection"
   },
   "options": {},
-  "attributes": {},
+  "attributes": {
+    "section_title_kh": {
+      "type": "string"
+    }
+  },
   "config": {}
 }

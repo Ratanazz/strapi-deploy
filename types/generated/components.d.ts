@@ -12,6 +12,71 @@ export interface CardsDigitalStatCard extends Struct.ComponentSchema {
       Schema.Attribute.Required;
     mainStat: Schema.Attribute.String & Schema.Attribute.Required;
     source: Schema.Attribute.String & Schema.Attribute.Required;
+    source_url: Schema.Attribute.String;
+    year: Schema.Attribute.String;
+  };
+}
+
+export interface SectionAboutdesCommittee extends Struct.ComponentSchema {
+  collectionName: 'components_section_aboutdes_committees';
+  info: {
+    displayName: 'committee';
+  };
+  attributes: {
+    Chairmain: Schema.Attribute.Component<'shared.excellency', false>;
+    member: Schema.Attribute.Component<'shared.excellency', true>;
+    section_subtitle_kh: Schema.Attribute.String & Schema.Attribute.Required;
+    section_title_kh: Schema.Attribute.String & Schema.Attribute.Required;
+    vice_chairman: Schema.Attribute.Component<'shared.excellency', false>;
+  };
+}
+
+export interface SectionAboutdesRolesAndResponsibilities
+  extends Struct.ComponentSchema {
+  collectionName: 'components_section_aboutdes_roles_and_responsibilities';
+  info: {
+    displayName: 'Roles-and-responsibilities';
+    icon: 'briefcase';
+  };
+  attributes: {
+    Role_card: Schema.Attribute.Component<'shared.cards', true>;
+    section_subtitle_kh: Schema.Attribute.Text;
+    section_title_kh: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface SectionGeneralsecretariatComposition
+  extends Struct.ComponentSchema {
+  collectionName: 'components_section_generalsecretariat_compositions';
+  info: {
+    displayName: 'composition';
+    icon: 'briefcase';
+  };
+  attributes: {
+    secretary_general: Schema.Attribute.Component<'shared.excellency', false>;
+    section_title_kh: Schema.Attribute.String & Schema.Attribute.Required;
+    vice_secretary_general: Schema.Attribute.Component<
+      'shared.excellency',
+      true
+    >;
+  };
+}
+
+export interface SectionGeneralsecretariatTreeStructureSmall
+  extends Struct.ComponentSchema {
+  collectionName: 'components_section_generalsecretariat_tree_structure_smalls';
+  info: {
+    displayName: 'tree-Structure-small';
+  };
+  attributes: {
+    bottom_tree: Schema.Attribute.Component<
+      'shared.bottom-tree-structure',
+      true
+    >;
+    middle_tree: Schema.Attribute.String & Schema.Attribute.Required;
+    section_subtitle_kh: Schema.Attribute.Text & Schema.Attribute.Required;
+    section_title_kh: Schema.Attribute.String & Schema.Attribute.Required;
+    top_tree: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -50,7 +115,10 @@ export interface SectionGoals extends Struct.ComponentSchema {
   info: {
     displayName: 'Goals';
   };
-  attributes: {};
+  attributes: {
+    section_subtitle_kh: Schema.Attribute.String;
+    section_title_kh: Schema.Attribute.String;
+  };
 }
 
 export interface SectionNewsSection extends Struct.ComponentSchema {
@@ -58,7 +126,9 @@ export interface SectionNewsSection extends Struct.ComponentSchema {
   info: {
     displayName: 'NewsSection';
   };
-  attributes: {};
+  attributes: {
+    section_title_kh: Schema.Attribute.String;
+  };
 }
 
 export interface SectionRoadmapDigitalCambodia extends Struct.ComponentSchema {
@@ -72,13 +142,26 @@ export interface SectionRoadmapDigitalCambodia extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedBottomTreeStructure extends Struct.ComponentSchema {
+  collectionName: 'components_shared_bottom_tree_structures';
+  info: {
+    displayName: 'bottom-tree-structure';
+  };
+  attributes: {
+    title_kh: Schema.Attribute.String;
+  };
+}
+
 export interface SharedCards extends Struct.ComponentSchema {
   collectionName: 'components_shared_cards';
   info: {
     displayName: 'cards';
     icon: 'book';
   };
-  attributes: {};
+  attributes: {
+    description: Schema.Attribute.Text;
+    icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+  };
 }
 
 export interface SharedExcellency extends Struct.ComponentSchema {
@@ -94,6 +177,34 @@ export interface SharedExcellency extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedIcon extends Struct.ComponentSchema {
+  collectionName: 'components_shared_icons';
+  info: {
+    displayName: 'icon';
+    icon: 'landscape';
+  };
+  attributes: {
+    icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+  };
+}
+
+export interface SharedMainBanner extends Struct.ComponentSchema {
+  collectionName: 'components_shared_main_banners';
+  info: {
+    displayName: 'MainBanner';
+    icon: 'picture';
+  };
+  attributes: {
+    background_image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    current_page_name_kh: Schema.Attribute.String & Schema.Attribute.Required;
+    description_kh: Schema.Attribute.String;
+    float_icon: Schema.Attribute.Component<'shared.icon', true>;
+    title_kh: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface SharedPeriod extends Struct.ComponentSchema {
   collectionName: 'components_shared_periods';
   info: {
@@ -106,18 +217,44 @@ export interface SharedPeriod extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedTreeStructure extends Struct.ComponentSchema {
+  collectionName: 'components_shared_tree_structures';
+  info: {
+    displayName: 'tree-Structure';
+  };
+  attributes: {
+    bottom_tree: Schema.Attribute.Component<
+      'shared.bottom-tree-structure',
+      true
+    >;
+    middle_left: Schema.Attribute.String;
+    middle_right: Schema.Attribute.String;
+    section_title: Schema.Attribute.String & Schema.Attribute.Required;
+    section_top_subtitle_kh: Schema.Attribute.Text & Schema.Attribute.Required;
+    top_tree: Schema.Attribute.String;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'cards.digital-stat-card': CardsDigitalStatCard;
+      'section-aboutdes.committee': SectionAboutdesCommittee;
+      'section-aboutdes.roles-and-responsibilities': SectionAboutdesRolesAndResponsibilities;
+      'section-generalsecretariat.composition': SectionGeneralsecretariatComposition;
+      'section-generalsecretariat.tree-structure-small': SectionGeneralsecretariatTreeStructureSmall;
       'section.banner-section': SectionBannerSection;
       'section.digital-space': SectionDigitalSpace;
       'section.goals': SectionGoals;
       'section.news-section': SectionNewsSection;
       'section.roadmap-digital-cambodia': SectionRoadmapDigitalCambodia;
+      'shared.bottom-tree-structure': SharedBottomTreeStructure;
       'shared.cards': SharedCards;
       'shared.excellency': SharedExcellency;
+      'shared.icon': SharedIcon;
+      'shared.main-banner': SharedMainBanner;
       'shared.period': SharedPeriod;
+      'shared.tree-structure': SharedTreeStructure;
     }
   }
 }

@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_section_generalsecretariat_compositions",
+  "info": {
+    "displayName": "composition",
+    "icon": "briefcase"
+  },
+  "options": {},
+  "attributes": {
+    "section_title_kh": {
+      "type": "string",
+      "required": true
+    },
+    "secretary_general": {
+      "type": "component",
+      "component": "shared.excellency",
+      "repeatable": false
+    },
+    "vice_secretary_general": {
+      "type": "component",
+      "component": "shared.excellency",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
