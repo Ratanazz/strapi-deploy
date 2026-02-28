@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_shared_videoplayers",
+  "info": {
+    "displayName": "Videoplayer"
+  },
+  "options": {},
+  "attributes": {
+    "section_title_kh": {
+      "type": "string"
+    },
+    "video": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "description": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

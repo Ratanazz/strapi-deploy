@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "document_categories",
+  "info": {
+    "singularName": "document-category",
+    "pluralName": "document-categories",
+    "displayName": "DocumentCategory"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "key": {
+      "type": "string"
+    },
+    "labelEn": {
+      "type": "string"
+    },
+    "labelKm": {
+      "type": "string"
+    },
+    "document_resources": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::document-resource.document-resource",
+      "mappedBy": "document_category"
+    }
+  }
+}

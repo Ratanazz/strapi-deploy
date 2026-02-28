@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_section_home_frameworks",
+  "info": {
+    "displayName": "home-framework"
+  },
+  "options": {},
+  "attributes": {
+    "section_title_kh": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  },
+  "config": {}
+}

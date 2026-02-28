@@ -29,17 +29,11 @@
     "File_Description": {
       "type": "blocks"
     },
-    "category": {
-      "type": "enumeration",
-      "required": true,
-      "default": "Report",
-      "enum": [
-        "Laws&Regulations",
-        "Policies",
-        "Report",
-        "TrainingMaterials ",
-        "Video"
-      ]
+    "document_category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::document-category.document-category",
+      "inversedBy": "document_resources"
     }
   }
 }

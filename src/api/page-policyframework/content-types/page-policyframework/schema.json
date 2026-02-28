@@ -1,0 +1,27 @@
+{
+  "kind": "singleType",
+  "collectionName": "page_policyframeworks",
+  "info": {
+    "singularName": "page-policyframework",
+    "pluralName": "page-policyframeworks",
+    "displayName": "page-policyframework"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Dynamiczone": {
+      "type": "dynamiczone",
+      "components": [
+        "shared.main-banner",
+        "shared.videoplayer",
+        "shared.maingoalsection",
+        "shared.policyframework",
+        "section.reducing-impact",
+        "section.home-framework",
+        "section.circle-of-framework"
+      ]
+    }
+  }
+}

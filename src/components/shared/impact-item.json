@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_shared_impact_items",
+  "info": {
+    "displayName": "impact-item",
+    "icon": "bold"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

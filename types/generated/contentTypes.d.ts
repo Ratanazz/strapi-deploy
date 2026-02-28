@@ -528,6 +528,41 @@ export interface ApiDigitalStatSectionDigitalStatSection
   };
 }
 
+export interface ApiDocumentCategoryDocumentCategory
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'document_categories';
+  info: {
+    displayName: 'DocumentCategory';
+    pluralName: 'document-categories';
+    singularName: 'document-category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    document_resources: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::document-resource.document-resource'
+    >;
+    key: Schema.Attribute.String;
+    labelEn: Schema.Attribute.String;
+    labelKm: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::document-category.document-category'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiDocumentResourceDocumentResource
   extends Struct.CollectionTypeSchema {
   collectionName: 'document_resources';
@@ -540,14 +575,13 @@ export interface ApiDocumentResourceDocumentResource
     draftAndPublish: true;
   };
   attributes: {
-    category: Schema.Attribute.Enumeration<
-      ['Laws&Regulations', 'Policies', 'Report', 'TrainingMaterials ', 'Video']
-    > &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'Report'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    document_category: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::document-category.document-category'
+    >;
     File: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
       Schema.Attribute.Required;
     File_Description: Schema.Attribute.Blocks;
@@ -668,6 +702,40 @@ export interface ApiPageAboutDesPageAboutDes extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiPageDocumentPageDocument extends Struct.SingleTypeSchema {
+  collectionName: 'page_documents';
+  info: {
+    displayName: 'Page-Document';
+    pluralName: 'page-documents';
+    singularName: 'page-document';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Dynamiczone: Schema.Attribute.DynamicZone<
+      [
+        'shared.main-banner',
+        'empty-component.stats-bar',
+        'empty-component.document-grid',
+      ]
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::page-document.page-document'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPageGeneralSecretariatPageGeneralSecretariat
   extends Struct.SingleTypeSchema {
   collectionName: 'page_general_secretariats';
@@ -695,6 +763,45 @@ export interface ApiPageGeneralSecretariatPageGeneralSecretariat
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::page-general-secretariat.page-general-secretariat'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPagePolicyframeworkPagePolicyframework
+  extends Struct.SingleTypeSchema {
+  collectionName: 'page_policyframeworks';
+  info: {
+    displayName: 'page-policyframework';
+    pluralName: 'page-policyframeworks';
+    singularName: 'page-policyframework';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Dynamiczone: Schema.Attribute.DynamicZone<
+      [
+        'shared.main-banner',
+        'shared.videoplayer',
+        'shared.maingoalsection',
+        'shared.policyframework',
+        'section.reducing-impact',
+        'section.home-framework',
+        'section.circle-of-framework',
+      ]
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::page-policyframework.page-policyframework'
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
@@ -1249,11 +1356,14 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::committee.committee': ApiCommitteeCommittee;
       'api::digital-stat-section.digital-stat-section': ApiDigitalStatSectionDigitalStatSection;
+      'api::document-category.document-category': ApiDocumentCategoryDocumentCategory;
       'api::document-resource.document-resource': ApiDocumentResourceDocumentResource;
       'api::landing-page.landing-page': ApiLandingPageLandingPage;
       'api::new.new': ApiNewNew;
       'api::page-about-des.page-about-des': ApiPageAboutDesPageAboutDes;
+      'api::page-document.page-document': ApiPageDocumentPageDocument;
       'api::page-general-secretariat.page-general-secretariat': ApiPageGeneralSecretariatPageGeneralSecretariat;
+      'api::page-policyframework.page-policyframework': ApiPagePolicyframeworkPagePolicyframework;
       'api::roadmap-digital-cambodia.roadmap-digital-cambodia': ApiRoadmapDigitalCambodiaRoadmapDigitalCambodia;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

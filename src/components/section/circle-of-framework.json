@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_section_circle_of_frameworks",
+  "info": {
+    "displayName": "circle-of-framework"
+  },
+  "options": {},
+  "attributes": {
+    "section_title_kh": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  },
+  "config": {}
+}

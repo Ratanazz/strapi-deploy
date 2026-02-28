@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_shared_maingoalsections",
+  "info": {
+    "displayName": "maingoalsection"
+  },
+  "options": {},
+  "attributes": {
+    "section_title_kh": {
+      "type": "string"
+    },
+    "section_subtitle_kh": {
+      "type": "string"
+    },
+    "goalcard": {
+      "type": "component",
+      "component": "cards.standard-card",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

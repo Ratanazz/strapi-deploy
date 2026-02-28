@@ -1,0 +1,23 @@
+{
+  "kind": "singleType",
+  "collectionName": "page_documents",
+  "info": {
+    "singularName": "page-document",
+    "pluralName": "page-documents",
+    "displayName": "Page-Document"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Dynamiczone": {
+      "type": "dynamiczone",
+      "components": [
+        "shared.main-banner",
+        "empty-component.stats-bar",
+        "empty-component.document-grid"
+      ]
+    }
+  }
+}

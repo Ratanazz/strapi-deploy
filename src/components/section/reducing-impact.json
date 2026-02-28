@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_section_reducing_impacts",
+  "info": {
+    "displayName": "reducing-impact"
+  },
+  "options": {},
+  "attributes": {
+    "section_title_kh": {
+      "type": "string"
+    },
+    "section_description_kh": {
+      "type": "text"
+    },
+    "center_image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "impact_group_text": {
+      "type": "component",
+      "component": "shared.impact-group",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

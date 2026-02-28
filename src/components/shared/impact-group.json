@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_shared_impact_groups",
+  "info": {
+    "displayName": "impact_group"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string"
+    },
+    "text_list": {
+      "type": "component",
+      "component": "shared.impact-item",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

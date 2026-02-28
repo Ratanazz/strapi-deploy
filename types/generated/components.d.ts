@@ -17,6 +17,34 @@ export interface CardsDigitalStatCard extends Struct.ComponentSchema {
   };
 }
 
+export interface CardsStandardCard extends Struct.ComponentSchema {
+  collectionName: 'components_cards_standard_cards';
+  info: {
+    displayName: 'StandardCard';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface EmptyComponentDocumentGrid extends Struct.ComponentSchema {
+  collectionName: 'components_empty_component_document_grids';
+  info: {
+    displayName: 'document-grid';
+  };
+  attributes: {};
+}
+
+export interface EmptyComponentStatsBar extends Struct.ComponentSchema {
+  collectionName: 'components_empty_component_stats_bars';
+  info: {
+    displayName: 'stats-bar';
+  };
+  attributes: {};
+}
+
 export interface SectionAboutdesCommittee extends Struct.ComponentSchema {
   collectionName: 'components_section_aboutdes_committees';
   info: {
@@ -99,6 +127,18 @@ export interface SectionBannerSection extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionCircleOfFramework extends Struct.ComponentSchema {
+  collectionName: 'components_section_circle_of_frameworks';
+  info: {
+    displayName: 'circle-of-framework';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    section_title_kh: Schema.Attribute.String;
+  };
+}
+
 export interface SectionDigitalSpace extends Struct.ComponentSchema {
   collectionName: 'components_section_digital_spaces';
   info: {
@@ -121,12 +161,39 @@ export interface SectionGoals extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionHomeFramework extends Struct.ComponentSchema {
+  collectionName: 'components_section_home_frameworks';
+  info: {
+    displayName: 'home-framework';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    section_title_kh: Schema.Attribute.String;
+  };
+}
+
 export interface SectionNewsSection extends Struct.ComponentSchema {
   collectionName: 'components_section_news_sections';
   info: {
     displayName: 'NewsSection';
   };
   attributes: {
+    section_title_kh: Schema.Attribute.String;
+  };
+}
+
+export interface SectionReducingImpact extends Struct.ComponentSchema {
+  collectionName: 'components_section_reducing_impacts';
+  info: {
+    displayName: 'reducing-impact';
+  };
+  attributes: {
+    center_image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    impact_group_text: Schema.Attribute.Component<'shared.impact-group', true>;
+    section_description_kh: Schema.Attribute.Text;
     section_title_kh: Schema.Attribute.String;
   };
 }
@@ -188,6 +255,29 @@ export interface SharedIcon extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedImpactGroup extends Struct.ComponentSchema {
+  collectionName: 'components_shared_impact_groups';
+  info: {
+    displayName: 'impact_group';
+  };
+  attributes: {
+    color: Schema.Attribute.String;
+    text_list: Schema.Attribute.Component<'shared.impact-item', true>;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface SharedImpactItem extends Struct.ComponentSchema {
+  collectionName: 'components_shared_impact_items';
+  info: {
+    displayName: 'impact-item';
+    icon: 'bold';
+  };
+  attributes: {
+    text: Schema.Attribute.Text;
+  };
+}
+
 export interface SharedMainBanner extends Struct.ComponentSchema {
   collectionName: 'components_shared_main_banners';
   info: {
@@ -205,6 +295,18 @@ export interface SharedMainBanner extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedMaingoalsection extends Struct.ComponentSchema {
+  collectionName: 'components_shared_maingoalsections';
+  info: {
+    displayName: 'maingoalsection';
+  };
+  attributes: {
+    goalcard: Schema.Attribute.Component<'cards.standard-card', true>;
+    section_subtitle_kh: Schema.Attribute.String;
+    section_title_kh: Schema.Attribute.String;
+  };
+}
+
 export interface SharedPeriod extends Struct.ComponentSchema {
   collectionName: 'components_shared_periods';
   info: {
@@ -214,6 +316,18 @@ export interface SharedPeriod extends Struct.ComponentSchema {
     description: Schema.Attribute.String;
     title: Schema.Attribute.String;
     year_range: Schema.Attribute.String;
+  };
+}
+
+export interface SharedPolicyframework extends Struct.ComponentSchema {
+  collectionName: 'components_shared_policyframeworks';
+  info: {
+    displayName: 'Policyframework';
+  };
+  attributes: {
+    policyframework: Schema.Attribute.Component<'cards.standard-card', true>;
+    section_subtitle_kh: Schema.Attribute.String;
+    section_title_kh: Schema.Attribute.String;
   };
 }
 
@@ -235,26 +349,49 @@ export interface SharedTreeStructure extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedVideoplayer extends Struct.ComponentSchema {
+  collectionName: 'components_shared_videoplayers';
+  info: {
+    displayName: 'Videoplayer';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    section_title_kh: Schema.Attribute.String;
+    video: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'cards.digital-stat-card': CardsDigitalStatCard;
+      'cards.standard-card': CardsStandardCard;
+      'empty-component.document-grid': EmptyComponentDocumentGrid;
+      'empty-component.stats-bar': EmptyComponentStatsBar;
       'section-aboutdes.committee': SectionAboutdesCommittee;
       'section-aboutdes.roles-and-responsibilities': SectionAboutdesRolesAndResponsibilities;
       'section-generalsecretariat.composition': SectionGeneralsecretariatComposition;
       'section-generalsecretariat.tree-structure-small': SectionGeneralsecretariatTreeStructureSmall;
       'section.banner-section': SectionBannerSection;
+      'section.circle-of-framework': SectionCircleOfFramework;
       'section.digital-space': SectionDigitalSpace;
       'section.goals': SectionGoals;
+      'section.home-framework': SectionHomeFramework;
       'section.news-section': SectionNewsSection;
+      'section.reducing-impact': SectionReducingImpact;
       'section.roadmap-digital-cambodia': SectionRoadmapDigitalCambodia;
       'shared.bottom-tree-structure': SharedBottomTreeStructure;
       'shared.cards': SharedCards;
       'shared.excellency': SharedExcellency;
       'shared.icon': SharedIcon;
+      'shared.impact-group': SharedImpactGroup;
+      'shared.impact-item': SharedImpactItem;
       'shared.main-banner': SharedMainBanner;
+      'shared.maingoalsection': SharedMaingoalsection;
       'shared.period': SharedPeriod;
+      'shared.policyframework': SharedPolicyframework;
       'shared.tree-structure': SharedTreeStructure;
+      'shared.videoplayer': SharedVideoplayer;
     }
   }
 }
