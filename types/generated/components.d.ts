@@ -45,6 +45,30 @@ export interface EmptyComponentStatsBar extends Struct.ComponentSchema {
   attributes: {};
 }
 
+export interface FooterLinkColumn extends Struct.ComponentSchema {
+  collectionName: 'components_footer_link_columns';
+  info: {
+    displayName: 'link-column';
+  };
+  attributes: {
+    links: Schema.Attribute.Component<'footer.link-item', true>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface FooterLinkItem extends Struct.ComponentSchema {
+  collectionName: 'components_footer_link_items';
+  info: {
+    displayName: 'link-item';
+  };
+  attributes: {
+    label: Schema.Attribute.String;
+    open_in_new_tab: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
+    url: Schema.Attribute.String;
+  };
+}
+
 export interface SectionAboutdesCommittee extends Struct.ComponentSchema {
   collectionName: 'components_section_aboutdes_committees';
   info: {
@@ -108,6 +132,60 @@ export interface SectionGeneralsecretariatTreeStructureSmall
   };
 }
 
+export interface SectionProgressframeworkCambodiaIndex
+  extends Struct.ComponentSchema {
+  collectionName: 'components_section_progressframework_cambodia_indices';
+  info: {
+    displayName: 'cambodia-index';
+  };
+  attributes: {};
+}
+
+export interface SectionProgressframeworkHexagonInformation
+  extends Struct.ComponentSchema {
+  collectionName: 'components_section_progressframework_hexagon_informations';
+  info: {
+    displayName: 'hexagon-information';
+  };
+  attributes: {};
+}
+
+export interface SectionProgressframeworkInternationalIndex
+  extends Struct.ComponentSchema {
+  collectionName: 'components_section_progressframework_international_indices';
+  info: {
+    displayName: 'international-index';
+  };
+  attributes: {};
+}
+
+export interface SectionProgressframeworkKpiProgress
+  extends Struct.ComponentSchema {
+  collectionName: 'components_section_progressframework_kpi_progresses';
+  info: {
+    displayName: 'kpi-progress';
+  };
+  attributes: {};
+}
+
+export interface SectionProgressframeworkSummarizeState
+  extends Struct.ComponentSchema {
+  collectionName: 'components_section_progressframework_summarize_states';
+  info: {
+    displayName: 'summarize-state';
+  };
+  attributes: {};
+}
+
+export interface SectionProgressframeworkTabNavigation
+  extends Struct.ComponentSchema {
+  collectionName: 'components_section_progressframework_tab_navigations';
+  info: {
+    displayName: 'tab-navigation';
+  };
+  attributes: {};
+}
+
 export interface SectionBannerSection extends Struct.ComponentSchema {
   collectionName: 'components_section_banner_sections';
   info: {
@@ -139,6 +217,15 @@ export interface SectionCircleOfFramework extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionContact extends Struct.ComponentSchema {
+  collectionName: 'components_section_contacts';
+  info: {
+    displayName: 'contact';
+    icon: 'envelop';
+  };
+  attributes: {};
+}
+
 export interface SectionDigitalSpace extends Struct.ComponentSchema {
   collectionName: 'components_section_digital_spaces';
   info: {
@@ -148,6 +235,15 @@ export interface SectionDigitalSpace extends Struct.ComponentSchema {
     cards: Schema.Attribute.Component<'cards.digital-stat-card', true>;
     title_kh: Schema.Attribute.String;
   };
+}
+
+export interface SectionDisplayallNews extends Struct.ComponentSchema {
+  collectionName: 'components_section_displayall_news';
+  info: {
+    displayName: 'DisplayallNews';
+    icon: 'layout';
+  };
+  attributes: {};
 }
 
 export interface SectionGoals extends Struct.ComponentSchema {
@@ -368,13 +464,23 @@ declare module '@strapi/strapi' {
       'cards.standard-card': CardsStandardCard;
       'empty-component.document-grid': EmptyComponentDocumentGrid;
       'empty-component.stats-bar': EmptyComponentStatsBar;
+      'footer.link-column': FooterLinkColumn;
+      'footer.link-item': FooterLinkItem;
       'section-aboutdes.committee': SectionAboutdesCommittee;
       'section-aboutdes.roles-and-responsibilities': SectionAboutdesRolesAndResponsibilities;
       'section-generalsecretariat.composition': SectionGeneralsecretariatComposition;
       'section-generalsecretariat.tree-structure-small': SectionGeneralsecretariatTreeStructureSmall;
+      'section-progressframework.cambodia-index': SectionProgressframeworkCambodiaIndex;
+      'section-progressframework.hexagon-information': SectionProgressframeworkHexagonInformation;
+      'section-progressframework.international-index': SectionProgressframeworkInternationalIndex;
+      'section-progressframework.kpi-progress': SectionProgressframeworkKpiProgress;
+      'section-progressframework.summarize-state': SectionProgressframeworkSummarizeState;
+      'section-progressframework.tab-navigation': SectionProgressframeworkTabNavigation;
       'section.banner-section': SectionBannerSection;
       'section.circle-of-framework': SectionCircleOfFramework;
+      'section.contact': SectionContact;
       'section.digital-space': SectionDigitalSpace;
+      'section.displayall-news': SectionDisplayallNews;
       'section.goals': SectionGoals;
       'section.home-framework': SectionHomeFramework;
       'section.news-section': SectionNewsSection;

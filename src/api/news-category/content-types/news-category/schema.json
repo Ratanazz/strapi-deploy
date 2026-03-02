@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "news_categories",
+  "info": {
+    "singularName": "news-category",
+    "pluralName": "news-categories",
+    "displayName": "NewsCategory"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name_en": {
+      "type": "string"
+    },
+    "name_kh": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name_en"
+    },
+    "news": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::new.new",
+      "mappedBy": "news_category"
+    }
+  }
+}

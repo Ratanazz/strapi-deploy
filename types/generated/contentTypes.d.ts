@@ -467,34 +467,34 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiCommitteeCommittee extends Struct.SingleTypeSchema {
-  collectionName: 'committees';
+export interface ApiContactContact extends Struct.CollectionTypeSchema {
+  collectionName: 'contacts';
   info: {
-    displayName: 'committee';
-    pluralName: 'committees';
-    singularName: 'committee';
+    displayName: 'Contact';
+    pluralName: 'contacts';
+    singularName: 'contact';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    chairman: Schema.Attribute.Component<'shared.excellency', false>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    email: Schema.Attribute.Email;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::committee.committee'
+      'api::contact.contact'
     > &
       Schema.Attribute.Private;
-    members: Schema.Attribute.Component<'shared.excellency', true>;
+    message: Schema.Attribute.Text;
+    name: Schema.Attribute.String;
+    phone: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    vice_chairman: Schema.Attribute.Component<'shared.excellency', false>;
   };
 }
 
@@ -599,6 +599,43 @@ export interface ApiDocumentResourceDocumentResource
   };
 }
 
+export interface ApiFooterFooter extends Struct.SingleTypeSchema {
+  collectionName: 'footers';
+  info: {
+    displayName: 'Footer';
+    pluralName: 'footers';
+    singularName: 'footer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    columns: Schema.Attribute.Component<'footer.link-column', true>;
+    copyright_text: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::footer.footer'
+    > &
+      Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    name_en: Schema.Attribute.String;
+    name_kh: Schema.Attribute.String;
+    privacy_label: Schema.Attribute.String;
+    privacy_url: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    terms_label: Schema.Attribute.String;
+    terms_url: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiLandingPageLandingPage extends Struct.SingleTypeSchema {
   collectionName: 'landing_pages';
   info: {
@@ -650,17 +687,51 @@ export interface ApiNewNew extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Description: Schema.Attribute.Blocks & Schema.Attribute.Required;
-    description1: Schema.Attribute.RichText;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::new.new'> &
       Schema.Attribute.Private;
+    news_category: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::news-category.news-category'
+    >;
     publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID<'Title'> & Schema.Attribute.Required;
     thumbnail: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     > &
       Schema.Attribute.Required;
     Title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiNewsCategoryNewsCategory
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'news_categories';
+  info: {
+    displayName: 'NewsCategory';
+    pluralName: 'news-categories';
+    singularName: 'news-category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::news-category.news-category'
+    > &
+      Schema.Attribute.Private;
+    name_en: Schema.Attribute.String;
+    name_kh: Schema.Attribute.String;
+    news: Schema.Attribute.Relation<'oneToMany', 'api::new.new'>;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'name_en'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -693,6 +764,36 @@ export interface ApiPageAboutDesPageAboutDes extends Struct.SingleTypeSchema {
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::page-about-des.page-about-des'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPageContactPageContact extends Struct.SingleTypeSchema {
+  collectionName: 'page_contacts';
+  info: {
+    displayName: 'page-contact';
+    pluralName: 'page-contacts';
+    singularName: 'page-contact';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Dynamiczone: Schema.Attribute.DynamicZone<
+      ['shared.main-banner', 'section.contact']
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::page-contact.page-contact'
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
@@ -772,6 +873,36 @@ export interface ApiPageGeneralSecretariatPageGeneralSecretariat
   };
 }
 
+export interface ApiPageNewsPageNews extends Struct.SingleTypeSchema {
+  collectionName: 'page_newss';
+  info: {
+    displayName: 'page-news';
+    pluralName: 'page-newss';
+    singularName: 'page-news';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Dynamiczone: Schema.Attribute.DynamicZone<
+      ['shared.main-banner', 'section.displayall-news']
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::page-news.page-news'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPagePolicyframeworkPagePolicyframework
   extends Struct.SingleTypeSchema {
   collectionName: 'page_policyframeworks';
@@ -805,6 +936,45 @@ export interface ApiPagePolicyframeworkPagePolicyframework
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPageProgressframeworkPageProgressframework
+  extends Struct.SingleTypeSchema {
+  collectionName: 'page_progressframeworks';
+  info: {
+    displayName: 'page-progressframework';
+    pluralName: 'page-progressframeworks';
+    singularName: 'page-progressframework';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::page-progressframework.page-progressframework'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    sections: Schema.Attribute.DynamicZone<
+      [
+        'section-progressframework.tab-navigation',
+        'section-progressframework.cambodia-index',
+        'section-progressframework.international-index',
+        'section-progressframework.hexagon-information',
+        'section-progressframework.summarize-state',
+        'section-progressframework.kpi-progress',
+        'shared.main-banner',
+      ]
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1354,16 +1524,21 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::committee.committee': ApiCommitteeCommittee;
+      'api::contact.contact': ApiContactContact;
       'api::digital-stat-section.digital-stat-section': ApiDigitalStatSectionDigitalStatSection;
       'api::document-category.document-category': ApiDocumentCategoryDocumentCategory;
       'api::document-resource.document-resource': ApiDocumentResourceDocumentResource;
+      'api::footer.footer': ApiFooterFooter;
       'api::landing-page.landing-page': ApiLandingPageLandingPage;
       'api::new.new': ApiNewNew;
+      'api::news-category.news-category': ApiNewsCategoryNewsCategory;
       'api::page-about-des.page-about-des': ApiPageAboutDesPageAboutDes;
+      'api::page-contact.page-contact': ApiPageContactPageContact;
       'api::page-document.page-document': ApiPageDocumentPageDocument;
       'api::page-general-secretariat.page-general-secretariat': ApiPageGeneralSecretariatPageGeneralSecretariat;
+      'api::page-news.page-news': ApiPageNewsPageNews;
       'api::page-policyframework.page-policyframework': ApiPagePolicyframeworkPagePolicyframework;
+      'api::page-progressframework.page-progressframework': ApiPageProgressframeworkPageProgressframework;
       'api::roadmap-digital-cambodia.roadmap-digital-cambodia': ApiRoadmapDigitalCambodiaRoadmapDigitalCambodia;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

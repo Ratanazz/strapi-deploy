@@ -30,14 +30,11 @@
         "audios"
       ]
     },
-    "slug": {
-      "type": "uid",
-      "targetField": "Title",
-      "required": true
-    },
-    "description1": {
-      "type": "richtext",
-      "required": false
+    "news_category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::news-category.news-category",
+      "inversedBy": "news"
     }
   }
 }

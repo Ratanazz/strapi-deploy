@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "page_newss",
+  "info": {
+    "singularName": "page-news",
+    "pluralName": "page-newss",
+    "displayName": "page-news"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Dynamiczone": {
+      "type": "dynamiczone",
+      "components": [
+        "shared.main-banner",
+        "section.displayall-news"
+      ]
+    }
+  }
+}

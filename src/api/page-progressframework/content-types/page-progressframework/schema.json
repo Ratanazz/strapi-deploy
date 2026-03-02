@@ -1,0 +1,27 @@
+{
+  "kind": "singleType",
+  "collectionName": "page_progressframeworks",
+  "info": {
+    "singularName": "page-progressframework",
+    "pluralName": "page-progressframeworks",
+    "displayName": "page-progressframework"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "sections": {
+      "type": "dynamiczone",
+      "components": [
+        "section-progressframework.tab-navigation",
+        "section-progressframework.cambodia-index",
+        "section-progressframework.international-index",
+        "section-progressframework.hexagon-information",
+        "section-progressframework.summarize-state",
+        "section-progressframework.kpi-progress",
+        "shared.main-banner"
+      ]
+    }
+  }
+}
