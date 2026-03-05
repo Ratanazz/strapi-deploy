@@ -914,6 +914,35 @@ export interface ApiPagePolicyframeworkPagePolicyframework
   };
 }
 
+export interface ApiPagePrivacyPagePrivacy extends Struct.SingleTypeSchema {
+  collectionName: 'page_privacies';
+  info: {
+    displayName: 'Page-Privacy';
+    pluralName: 'page-privacies';
+    singularName: 'page-privacy';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::page-privacy.page-privacy'
+    > &
+      Schema.Attribute.Private;
+    MainBanner: Schema.Attribute.Component<'shared.main-banner', false>;
+    publishedAt: Schema.Attribute.DateTime;
+    TextBlock: Schema.Attribute.Component<'shared.text-block', true>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPageProgressframeworkPageProgressframework
   extends Struct.SingleTypeSchema {
   collectionName: 'page_progressframeworks';
@@ -932,7 +961,6 @@ export interface ApiPageProgressframeworkPageProgressframework
         'section-progressframework.international-index',
         'section-progressframework.hexagon-information',
         'section-progressframework.summarize-state',
-        'section-progressframework.kpi-progress',
         'shared.main-banner',
       ]
     >;
@@ -954,6 +982,36 @@ export interface ApiPageProgressframeworkPageProgressframework
       'section-progressframework.tab-navigation',
       false
     >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPageTermAndConditionPageTermAndCondition
+  extends Struct.SingleTypeSchema {
+  collectionName: 'page_term_and_conditions';
+  info: {
+    displayName: 'Page-TermAndCondition';
+    pluralName: 'page-term-and-conditions';
+    singularName: 'page-term-and-condition';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Banner: Schema.Attribute.Component<'shared.main-banner', false>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::page-term-and-condition.page-term-and-condition'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    TextBlock: Schema.Attribute.Component<'shared.text-block', true>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1520,7 +1578,9 @@ declare module '@strapi/strapi' {
       'api::page-general-secretariat.page-general-secretariat': ApiPageGeneralSecretariatPageGeneralSecretariat;
       'api::page-news.page-news': ApiPageNewsPageNews;
       'api::page-policyframework.page-policyframework': ApiPagePolicyframeworkPagePolicyframework;
+      'api::page-privacy.page-privacy': ApiPagePrivacyPagePrivacy;
       'api::page-progressframework.page-progressframework': ApiPageProgressframeworkPageProgressframework;
+      'api::page-term-and-condition.page-term-and-condition': ApiPageTermAndConditionPageTermAndCondition;
       'api::plan.plan': ApiPlanPlan;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

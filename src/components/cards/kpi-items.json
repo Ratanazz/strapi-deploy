@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_cards_kpi_items",
+  "info": {
+    "displayName": "KPI-items"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string"
+    },
+    "semester_values": {
+      "type": "component",
+      "component": "shared.semester-values",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

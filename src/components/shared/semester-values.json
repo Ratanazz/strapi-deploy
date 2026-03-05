@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_shared_semester_values",
+  "info": {
+    "displayName": "semester-values"
+  },
+  "options": {},
+  "attributes": {
+    "filter_label": {
+      "type": "string"
+    },
+    "value": {
+      "type": "decimal"
+    }
+  },
+  "config": {}
+}

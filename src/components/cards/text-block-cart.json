@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_cards_text_block_carts",
+  "info": {
+    "displayName": "TextBlockCard"
+  },
+  "options": {},
+  "attributes": {
+    "Textblock": {
+      "type": "component",
+      "component": "shared.text-block",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

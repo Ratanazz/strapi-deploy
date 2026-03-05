@@ -4,6 +4,24 @@
     "displayName": "summarize-state"
   },
   "options": {},
-  "attributes": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "text"
+    },
+    "middle_title": {
+      "type": "text"
+    },
+    "bottom_heading": {
+      "type": "string"
+    },
+    "kpi_items": {
+      "type": "component",
+      "component": "cards.kpi-items",
+      "repeatable": true
+    }
+  },
   "config": {}
 }

@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "page_privacies",
+  "info": {
+    "singularName": "page-privacy",
+    "pluralName": "page-privacies",
+    "displayName": "Page-Privacy"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "MainBanner": {
+      "type": "component",
+      "component": "shared.main-banner",
+      "repeatable": false
+    },
+    "TextBlock": {
+      "type": "component",
+      "component": "shared.text-block",
+      "repeatable": true
+    }
+  }
+}

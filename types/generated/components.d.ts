@@ -29,6 +29,18 @@ export interface CardsDigitalStatCard extends Struct.ComponentSchema {
   };
 }
 
+export interface CardsKpiItems extends Struct.ComponentSchema {
+  collectionName: 'components_cards_kpi_items';
+  info: {
+    displayName: 'KPI-items';
+  };
+  attributes: {
+    color: Schema.Attribute.String;
+    label: Schema.Attribute.String;
+    semester_values: Schema.Attribute.Component<'shared.semester-values', true>;
+  };
+}
+
 export interface CardsStandardCard extends Struct.ComponentSchema {
   collectionName: 'components_cards_standard_cards';
   info: {
@@ -39,6 +51,16 @@ export interface CardsStandardCard extends Struct.ComponentSchema {
     description: Schema.Attribute.Text;
     icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     title: Schema.Attribute.String;
+  };
+}
+
+export interface CardsTextBlockCart extends Struct.ComponentSchema {
+  collectionName: 'components_cards_text_block_carts';
+  info: {
+    displayName: 'TextBlockCard';
+  };
+  attributes: {
+    Textblock: Schema.Attribute.Component<'shared.text-block', true>;
   };
 }
 
@@ -188,7 +210,13 @@ export interface SectionProgressframeworkSummarizeState
   info: {
     displayName: 'summarize-state';
   };
-  attributes: {};
+  attributes: {
+    bottom_heading: Schema.Attribute.String;
+    kpi_items: Schema.Attribute.Component<'cards.kpi-items', true>;
+    middle_title: Schema.Attribute.Text;
+    subtitle: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+  };
 }
 
 export interface SectionProgressframeworkTabNavigation
@@ -485,6 +513,28 @@ export interface SharedPolicyframework extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedSemesterValues extends Struct.ComponentSchema {
+  collectionName: 'components_shared_semester_values';
+  info: {
+    displayName: 'semester-values';
+  };
+  attributes: {
+    filter_label: Schema.Attribute.String;
+    value: Schema.Attribute.Decimal;
+  };
+}
+
+export interface SharedTextBlock extends Struct.ComponentSchema {
+  collectionName: 'components_shared_text_blocks';
+  info: {
+    displayName: 'TextBlock';
+  };
+  attributes: {
+    paragraph: Schema.Attribute.Blocks;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface SharedTreeStructure extends Struct.ComponentSchema {
   collectionName: 'components_shared_tree_structures';
   info: {
@@ -520,7 +570,9 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'cards.card-richtext': CardsCardRichtext;
       'cards.digital-stat-card': CardsDigitalStatCard;
+      'cards.kpi-items': CardsKpiItems;
       'cards.standard-card': CardsStandardCard;
+      'cards.text-block-cart': CardsTextBlockCart;
       'empty-component.document-grid': EmptyComponentDocumentGrid;
       'empty-component.stats-bar': EmptyComponentStatsBar;
       'footer.link-column': FooterLinkColumn;
@@ -558,6 +610,8 @@ declare module '@strapi/strapi' {
       'shared.maingoalsection': SharedMaingoalsection;
       'shared.period': SharedPeriod;
       'shared.policyframework': SharedPolicyframework;
+      'shared.semester-values': SharedSemesterValues;
+      'shared.text-block': SharedTextBlock;
       'shared.tree-structure': SharedTreeStructure;
       'shared.videoplayer': SharedVideoplayer;
     }
