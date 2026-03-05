@@ -1,19 +1,15 @@
 {
-  "collectionName": "components_footer_link_items",
+  "collectionName": "components_cards_card_richtexts",
   "info": {
-    "displayName": "link-item"
+    "displayName": "CardRichtext"
   },
   "options": {},
   "attributes": {
-    "label": {
-      "type": "text"
-    },
-    "url": {
+    "title": {
       "type": "string"
     },
-    "open_in_new_tab": {
-      "type": "boolean",
-      "default": false
+    "description": {
+      "type": "blocks"
     },
     "icon": {
       "type": "media",

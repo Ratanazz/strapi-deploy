@@ -34,6 +34,16 @@
       "relation": "manyToOne",
       "target": "api::document-category.document-category",
       "inversedBy": "document_resources"
+    },
+    "tag": {
+      "type": "enumeration",
+      "enum": [
+        "MPTC",
+        "DES",
+        "DGC",
+        "DEBC",
+        "DSC"
+      ]
     }
   }
 }

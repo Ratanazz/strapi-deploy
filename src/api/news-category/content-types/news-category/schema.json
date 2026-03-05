@@ -26,6 +26,9 @@
       "relation": "oneToMany",
       "target": "api::new.new",
       "mappedBy": "news_category"
+    },
+    "order": {
+      "type": "integer"
     }
   }
 }

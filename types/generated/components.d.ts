@@ -1,5 +1,17 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface CardsCardRichtext extends Struct.ComponentSchema {
+  collectionName: 'components_cards_card_richtexts';
+  info: {
+    displayName: 'CardRichtext';
+  };
+  attributes: {
+    description: Schema.Attribute.Blocks;
+    icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface CardsDigitalStatCard extends Struct.ComponentSchema {
   collectionName: 'components_cards_digital_stat_cards';
   info: {
@@ -23,6 +35,7 @@ export interface CardsStandardCard extends Struct.ComponentSchema {
     displayName: 'StandardCard';
   };
   attributes: {
+    cardid: Schema.Attribute.String;
     description: Schema.Attribute.Text;
     icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     title: Schema.Attribute.String;
@@ -62,7 +75,8 @@ export interface FooterLinkItem extends Struct.ComponentSchema {
     displayName: 'link-item';
   };
   attributes: {
-    label: Schema.Attribute.String;
+    icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    label: Schema.Attribute.Text;
     open_in_new_tab: Schema.Attribute.Boolean &
       Schema.Attribute.DefaultTo<false>;
     url: Schema.Attribute.String;
@@ -252,6 +266,16 @@ export interface SectionGoals extends Struct.ComponentSchema {
     displayName: 'Goals';
   };
   attributes: {
+    Foundation: Schema.Attribute.Component<'shared.goalpillar', true>;
+    Impact: Schema.Attribute.Component<'shared.goalpillar', false>;
+    Pillar: Schema.Attribute.Component<'shared.goalpillar', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 3;
+        },
+        number
+      >;
+    Roof: Schema.Attribute.Component<'shared.goalpillar', false>;
     section_subtitle_kh: Schema.Attribute.String;
     section_title_kh: Schema.Attribute.String;
   };
@@ -311,7 +335,8 @@ export interface SharedBottomTreeStructure extends Struct.ComponentSchema {
     displayName: 'bottom-tree-structure';
   };
   attributes: {
-    title_kh: Schema.Attribute.String;
+    link: Schema.Attribute.String;
+    title_kh: Schema.Attribute.Text;
   };
 }
 
@@ -340,6 +365,28 @@ export interface SharedExcellency extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedFeatures extends Struct.ComponentSchema {
+  collectionName: 'components_shared_features';
+  info: {
+    displayName: 'features';
+  };
+  attributes: {
+    label: Schema.Attribute.Text;
+  };
+}
+
+export interface SharedGoalpillar extends Struct.ComponentSchema {
+  collectionName: 'components_shared_goalpillars';
+  info: {
+    displayName: 'goalpillar';
+  };
+  attributes: {
+    link: Schema.Attribute.String;
+    opennewtab: Schema.Attribute.Boolean;
+    title: Schema.Attribute.Text;
+  };
+}
+
 export interface SharedIcon extends Struct.ComponentSchema {
   collectionName: 'components_shared_icons';
   info: {
@@ -359,7 +406,7 @@ export interface SharedImpactGroup extends Struct.ComponentSchema {
   attributes: {
     color: Schema.Attribute.String;
     text_list: Schema.Attribute.Component<'shared.impact-item', true>;
-    title: Schema.Attribute.String;
+    title: Schema.Attribute.Text;
   };
 }
 
@@ -371,6 +418,17 @@ export interface SharedImpactItem extends Struct.ComponentSchema {
   };
   attributes: {
     text: Schema.Attribute.Text;
+  };
+}
+
+export interface SharedKeyPoints extends Struct.ComponentSchema {
+  collectionName: 'components_shared_key_points';
+  info: {
+    displayName: 'keyPoints';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    label: Schema.Attribute.String;
   };
 }
 
@@ -387,7 +445,7 @@ export interface SharedMainBanner extends Struct.ComponentSchema {
     current_page_name_kh: Schema.Attribute.String & Schema.Attribute.Required;
     description_kh: Schema.Attribute.String;
     float_icon: Schema.Attribute.Component<'shared.icon', true>;
-    title_kh: Schema.Attribute.String & Schema.Attribute.Required;
+    title_kh: Schema.Attribute.Text & Schema.Attribute.Required;
   };
 }
 
@@ -421,7 +479,7 @@ export interface SharedPolicyframework extends Struct.ComponentSchema {
     displayName: 'Policyframework';
   };
   attributes: {
-    policyframework: Schema.Attribute.Component<'cards.standard-card', true>;
+    policyframework: Schema.Attribute.Component<'cards.card-richtext', true>;
     section_subtitle_kh: Schema.Attribute.String;
     section_title_kh: Schema.Attribute.String;
   };
@@ -460,6 +518,7 @@ export interface SharedVideoplayer extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'cards.card-richtext': CardsCardRichtext;
       'cards.digital-stat-card': CardsDigitalStatCard;
       'cards.standard-card': CardsStandardCard;
       'empty-component.document-grid': EmptyComponentDocumentGrid;
@@ -489,9 +548,12 @@ declare module '@strapi/strapi' {
       'shared.bottom-tree-structure': SharedBottomTreeStructure;
       'shared.cards': SharedCards;
       'shared.excellency': SharedExcellency;
+      'shared.features': SharedFeatures;
+      'shared.goalpillar': SharedGoalpillar;
       'shared.icon': SharedIcon;
       'shared.impact-group': SharedImpactGroup;
       'shared.impact-item': SharedImpactItem;
+      'shared.key-points': SharedKeyPoints;
       'shared.main-banner': SharedMainBanner;
       'shared.maingoalsection': SharedMaingoalsection;
       'shared.period': SharedPeriod;

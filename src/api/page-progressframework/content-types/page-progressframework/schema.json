@@ -11,16 +11,31 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "sections": {
+    "MainBanner": {
+      "type": "component",
+      "component": "shared.main-banner",
+      "repeatable": false
+    },
+    "tabnavigation": {
+      "type": "component",
+      "component": "section-progressframework.tab-navigation",
+      "repeatable": false
+    },
+    "cambodia_sections": {
       "type": "dynamiczone",
       "components": [
-        "section-progressframework.tab-navigation",
         "section-progressframework.cambodia-index",
         "section-progressframework.international-index",
         "section-progressframework.hexagon-information",
         "section-progressframework.summarize-state",
         "section-progressframework.kpi-progress",
         "shared.main-banner"
+      ]
+    },
+    "international_sections": {
+      "type": "dynamiczone",
+      "components": [
+        "section-progressframework.international-index"
       ]
     }
   }

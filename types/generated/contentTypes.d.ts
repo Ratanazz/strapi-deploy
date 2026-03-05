@@ -498,36 +498,6 @@ export interface ApiContactContact extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiDigitalStatSectionDigitalStatSection
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'digital_stat_sections';
-  info: {
-    displayName: 'DigitalStatSection';
-    pluralName: 'digital-stat-sections';
-    singularName: 'digital-stat-section';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    cards: Schema.Attribute.Component<'cards.digital-stat-card', true>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::digital-stat-section.digital-stat-section'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    title_kh: Schema.Attribute.String & Schema.Attribute.Required;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiDocumentCategoryDocumentCategory
   extends Struct.CollectionTypeSchema {
   collectionName: 'document_categories';
@@ -592,6 +562,7 @@ export interface ApiDocumentResourceDocumentResource
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    tag: Schema.Attribute.Enumeration<['MPTC', 'DES', 'DGC', 'DEBC', 'DSC']>;
     Title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -730,6 +701,7 @@ export interface ApiNewsCategoryNewsCategory
     name_en: Schema.Attribute.String;
     name_kh: Schema.Attribute.String;
     news: Schema.Attribute.Relation<'oneToMany', 'api::new.new'>;
+    order: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'name_en'>;
     updatedAt: Schema.Attribute.DateTime;
@@ -954,19 +926,8 @@ export interface ApiPageProgressframeworkPageProgressframework
     draftAndPublish: true;
   };
   attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::page-progressframework.page-progressframework'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    sections: Schema.Attribute.DynamicZone<
+    cambodia_sections: Schema.Attribute.DynamicZone<
       [
-        'section-progressframework.tab-navigation',
         'section-progressframework.cambodia-index',
         'section-progressframework.international-index',
         'section-progressframework.hexagon-information',
@@ -975,40 +936,62 @@ export interface ApiPageProgressframeworkPageProgressframework
         'shared.main-banner',
       ]
     >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    international_sections: Schema.Attribute.DynamicZone<
+      ['section-progressframework.international-index']
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::page-progressframework.page-progressframework'
+    > &
+      Schema.Attribute.Private;
+    MainBanner: Schema.Attribute.Component<'shared.main-banner', false>;
+    publishedAt: Schema.Attribute.DateTime;
+    tabnavigation: Schema.Attribute.Component<
+      'section-progressframework.tab-navigation',
+      false
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
-export interface ApiRoadmapDigitalCambodiaRoadmapDigitalCambodia
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'roadmap_digital_cambodias';
+export interface ApiPlanPlan extends Struct.CollectionTypeSchema {
+  collectionName: 'plans';
   info: {
-    displayName: 'roadmap-digital-cambodia';
-    pluralName: 'roadmap-digital-cambodias';
-    singularName: 'roadmap-digital-cambodia';
+    displayName: 'Plan';
+    pluralName: 'plans';
+    singularName: 'plan';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
+    colorcode: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    description: Schema.Attribute.Text;
+    features: Schema.Attribute.Component<'shared.features', true>;
+    howItWorks: Schema.Attribute.Blocks;
+    keypoints: Schema.Attribute.Component<'shared.key-points', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::roadmap-digital-cambodia.roadmap-digital-cambodia'
-    > &
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::plan.plan'> &
       Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    projectUrl: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
+    slug: Schema.Attribute.UID<'title'>;
+    subtitle: Schema.Attribute.String;
+    techFoundation: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    year_range: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -1525,7 +1508,6 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::contact.contact': ApiContactContact;
-      'api::digital-stat-section.digital-stat-section': ApiDigitalStatSectionDigitalStatSection;
       'api::document-category.document-category': ApiDocumentCategoryDocumentCategory;
       'api::document-resource.document-resource': ApiDocumentResourceDocumentResource;
       'api::footer.footer': ApiFooterFooter;
@@ -1539,7 +1521,7 @@ declare module '@strapi/strapi' {
       'api::page-news.page-news': ApiPageNewsPageNews;
       'api::page-policyframework.page-policyframework': ApiPagePolicyframeworkPagePolicyframework;
       'api::page-progressframework.page-progressframework': ApiPageProgressframeworkPageProgressframework;
-      'api::roadmap-digital-cambodia.roadmap-digital-cambodia': ApiRoadmapDigitalCambodiaRoadmapDigitalCambodia;
+      'api::plan.plan': ApiPlanPlan;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

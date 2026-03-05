@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_goalpillars",
+  "info": {
+    "displayName": "goalpillar"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "text"
+    },
+    "link": {
+      "type": "string"
+    },
+    "opennewtab": {
+      "type": "boolean"
+    }
+  },
+  "config": {}
+}

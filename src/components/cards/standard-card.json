@@ -20,6 +20,9 @@
         "videos",
         "audios"
       ]
+    },
+    "cardid": {
+      "type": "string"
     }
   },
   "config": {}

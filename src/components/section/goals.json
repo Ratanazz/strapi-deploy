@@ -10,6 +10,27 @@
     },
     "section_subtitle_kh": {
       "type": "string"
+    },
+    "Roof": {
+      "type": "component",
+      "component": "shared.goalpillar",
+      "repeatable": false
+    },
+    "Pillar": {
+      "type": "component",
+      "component": "shared.goalpillar",
+      "repeatable": true,
+      "max": 3
+    },
+    "Foundation": {
+      "type": "component",
+      "component": "shared.goalpillar",
+      "repeatable": true
+    },
+    "Impact": {
+      "type": "component",
+      "component": "shared.goalpillar",
+      "repeatable": false
     }
   },
   "config": {}

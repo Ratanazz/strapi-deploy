@@ -18,7 +18,7 @@ export default factories.createCoreController('api::contact.contact', ({ strapi 
 
       
       await strapi.plugin('email').service('email').send({
-        to: 'rathanachan55@gmail.com',
+        to: 'solorng-phat@mptc.gov.kh',
         replyTo: email,
         subject: `New Message from ${name}`,
         html: `

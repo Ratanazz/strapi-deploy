@@ -13,7 +13,7 @@
     },
     "policyframework": {
       "type": "component",
-      "component": "cards.standard-card",
+      "component": "cards.card-richtext",
       "repeatable": true
     }
   },
